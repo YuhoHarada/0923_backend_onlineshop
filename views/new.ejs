@@ -1,0 +1,30 @@
+<%- include('./partials/_head') %> 
+    <main id="new">
+        <section class="new">
+            <h2>ADD A NEW PRODUCT</h2>
+            <form action="/newPost" enctype="multipart/form-data" method="POST">
+                <input type="text" name="name" id="" placeholder="Product-name">
+                <input type="file" name="image" id="">
+                <input type="text" name="company" id="" placeholder="Company">
+                <input type="text" name="price" id="" placeholder="Price">
+                <textarea name="description" id="" cols="30" rows="10" placeholder="Write your article here....."></textarea>
+                <input type="submit" value="ADD PRODUCT">
+            </form>
+        </section>
+        <section class="eyes"><img src="/eyes.svg" alt=""></section>
+        <section class="three">
+            <h2>RANDOM PRODUCT</h2>
+            <% randomList.forEach(elt => { %>
+                <div class="item">
+                    <a href="/detail/<%= elt["_id"] %>"></a>
+                    <img src="<%= elt["Product-picture-Link"] %> " alt="">
+                    <div>
+                        <h3><%= elt["Product-name"] %></h3>
+                        <h3>$<%= Number(elt["Price"]).toFixed(2) %></h3>
+                    </div>
+                    <p><%= elt["Company"] %></p>
+                </div>
+            <% }) %>
+        </section>
+    </main>
+<%- include('./partials/_foot') %> 
